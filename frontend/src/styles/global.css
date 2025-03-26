@@ -1,0 +1,42 @@
+button {
+    background-color: #D81616;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #b71313;
+    transform: scale(1.05); /* 버튼을 살짝 확대 */
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 버튼 스타일 */
+  button {
+    background-color: #D81616;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* 레시피 카드 제목 */
+  .recipe-info h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  /* 텍스트 색상 */
+  .recipe-info p {
+    color: #666;
+  }
