@@ -1,10 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import AppRouter from './AppRouter'; // AppRouter를 임포트
+import ReactDOM from 'react-dom/client'; // `react-dom/client`로 수정
+import './index.css';
+import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <AppRouter /> {/* 라우터 적용 */}
-  </React.StrictMode>,
-  document.getElementById('root')
+// React 18에서는 `createRoot` 사용
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
+root.render(
+  <Router>
+    <App />
+  </Router>
 );
