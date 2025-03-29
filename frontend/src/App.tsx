@@ -45,7 +45,7 @@ const App: React.FC = () => {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search for a recipe"
+          placeholder="検索ワードを入力してください。"
         />
         <button type="submit">Search</button>
       </form>
