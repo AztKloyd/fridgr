@@ -6,6 +6,7 @@ const Recipe = require('./models/Recipe');  // Recipe 모델 불러오기
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User'); // User 모델 (이메일, 비밀번호 등)
+const path = require('path');
 
 
 dotenv.config();
@@ -224,6 +225,13 @@ app.delete('/recipes/:id', authenticateToken, async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   });
+
+  // React 앱을 빌드 후 static 폴더에서 제공
+app.use(express.static(path.join(__dirname, 'build')));
+// 루트 경로에 대한 요청을 React 앱으로 전달
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
   
   
