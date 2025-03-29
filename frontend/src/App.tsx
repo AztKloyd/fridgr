@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Login from './Login'; // 로그인 페이지
 import Register from './Register'; // 회원가입 페이지
 import RecipeList from './RecipeList'; // 메인 레시피 페이지
@@ -8,6 +9,7 @@ import SubmitForm from './SubmitForm'; // 레시피 추가 페이지
 
 const App: React.FC = () => {  
   const [recipes, setRecipes] = useState<any[]>([]);
+  const [searchInput, setSearchInput] = useState('');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // 레시피 목록을 가져오는 useEffect
@@ -24,19 +26,20 @@ const App: React.FC = () => {
   // 검색 처리 함수
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    setSearchQuery(searchQuery); // searchQuery 상태를 업데이트
-
+    setSearchQuery(searchInput); // searchQuery 상태를 업데이트
 
   };
+ 
 
   return (
     <Router>
     <div>
-      <h1>Recipe Book</h1>
+      <h1>Fridgr</h1>
 
-      {/* 내비게이션 링크 (로그인, 회원가입 페이지 이동) */}
       <nav>
-      <Link to="/login">Login</Link> | <Link to="/register">Register</Link> | <Link to="/add-recipe">Add Recipe</Link>
+      <Link to="/login">Login</Link> | 
+      <Link to="/register">Register</Link> | 
+      <Link to="/add-recipe">Add Recipe</Link>
       </nav>
 
       {/* 검색 기능 */}
@@ -44,7 +47,7 @@ const App: React.FC = () => {
         <input
           type="text"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => setSearchInput(e.target.value)}
           placeholder="検索ワードを入力してください。"
         />
         <button type="submit">Search</button>
@@ -71,6 +74,9 @@ const App: React.FC = () => {
           <Route path="/register" element={<Register />} />{/* 회원가입 페이지 */}
           <Route path="/add-recipe" element={<SubmitForm />} /> {/* 레시피 추가 페이지 */}
         </Routes>
+
+              {/* 내비게이션 링크 (로그인, 회원가입 페이지 이동) */}
+
     </div>
     </Router>
   );
